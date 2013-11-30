@@ -1,0 +1,49 @@
+﻿
+
+ensure JSTESTDRIVER_HOME environment variable is set on windows system and points to directry where the jsTestDriver jar file is installed
+
+from command line run -> java -jar %JSTESTDRIVER_HOME%\JstestDriver-1.3.4.b.jar --port 4224
+this will show a message "Setting runner mode quiet"
+DO NOT CLOSE!
+
+open browser you want to test in - eg Firefox
+visit localhost:4224 and select capture 
+DO NOT CLOSE!
+
+from command line, open at location of jsTestDriver.conf.
+run -> jsTestDriver-1.3.4.b.jar --tests all
+
+test scripts are refreshed every time, but the sources are not
+add --reset to refresh the javascript sources under test.
+
+This should show the test results.
+
+Instead of registering a browser that stays open, pas one and it will be opened each time via command line, open at location of jsTestDriver.conf.
+run -> jsTestDriver-1.3.4.b.jar --tests all  --browser "C:\Program Files (x86)\Mozilla Firefox\firefox.exe"
+
+There are debug and verbose command line params to see whats going on, i.e. --verbose
+
+Server to use can be passed instead of specifying it in the config file. --server http://localhost:4224
+
+
+-- Visual studio setup --
+Reference: http://slmoloch.blogspot.co.uk/2009/08/how-to-run-jstestdriver-with-visual_02.html
+
+* Add 2 external tools to visual studio, one to run the command to start jstestdriver along with extra params supplying which browsers 
+
+
+== RUBY EXTENSION - continuos running and colours ==
+# install ruby for windows
+# install rubygems
+# run > gem install gemcutter
+# run > gem install jstdutil
+# run > gem install win32console
+
+Continous running use jsautotest - this looks for saves to the sources the config points at!
+or run jstestdriver --tests all
+
+options to run:
+# command line window with colours - run > jsautotest
+# add external tool running > C:\Ruby193\bin\jsautotest.bat  (output goes to vs console so no colours)
+
+
